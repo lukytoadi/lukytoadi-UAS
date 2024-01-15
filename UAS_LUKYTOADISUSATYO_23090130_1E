@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class FuelSales {
+    public static void main(String[] args) {
+        ArrayList<Integer> pertaliteSales = new ArrayList<>();
+        ArrayList<Integer> pertamaxSales = new ArrayList<>();
+        ArrayList<Integer> pertamaxTurboSales = new ArrayList<>();
+        ArrayList<Integer> pertadexSales = new ArrayList<>();
+
+        Random random = new Random();
+
+        // Simulate sales for each type of fuel
+        for (int i = 0; i < 8 * 60 * 60; i += 3) { // Looping random sales every 3 seconds from 8 am to 4 pm
+            pertaliteSales.add(random.nextInt(1000)); // Assuming maximum sales of 1000 units
+            pertamaxSales.add(random.nextInt(1000));
+            pertamaxTurboSales.add(random.nextInt(1000));
+            pertadexSales.add(random.nextInt(1000));
+        }
+
+        // Display the sales data
+        System.out.println("Pertalite Sales: " + pertaliteSales);
+        System.out.println("Pertamax Sales: " + pertamaxSales);
+        System.out.println("Pertamax Turbo Sales: " + pertamaxTurboSales);
+        System.out.println("Pertadex Sales: " + pertadexSales);
+
+        // Calculate and display the remaining stock for each type of fuel
+        int pertaliteStock = 2000 - pertaliteSales.stream().mapToInt(Integer::intValue).sum();
+        int pertamaxStock = 2500 - pertamaxSales.stream().mapToInt(Integer::intValue).sum();
+        int pertamaxTurboStock = 1700 - pertamaxTurboSales.stream().mapToInt(Integer::intValue).sum();
+        int pertadexStock = 2800 - pertadexSales.stream().mapToInt(Integer::intValue).sum();
+
+        System.out.println("Pertalite Stock: " + pertaliteStock);
+        System.out.println("Pertamax Stock: " + pertamaxStock);
+        System.out.println("Pertamax Turbo Stock: " + pertamaxTurboStock);
+        System.out.println("Pertadex Stock: " + pertadexStock);
+    }
+}
